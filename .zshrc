@@ -1,3 +1,32 @@
+### MyConfig ###
+
+export current=cub
+
+alias rc="vi ~/.zshrc"
+alias src="source ~/.zshrc"
+
+[ ! -d ~/goinfre/mydotfiles/ ] && git clone git@github.com:Hamza-benfaddoul/mydotfiles.git ~/goinfre 
+[ ! -d ~/goinfre/$current ] && git clone git@github.com:walidoumechtak/CU-pushed.git ~/goinfre/$current
+
+alias caches_to_gfr="[ ! -d ~/goinfre/Caches ] && cp -Rf ~/Library/Caches ~/goinfre/"
+alias lnkc="[ -d ~/Library/Caches ] && rm -Rf ~/Library/Caches; [ ! -L ~/Library/Caches ] && ln -s ~/goinfre/Caches ~/Library/"
+
+caches_to_gfr
+lnkc
+
+[ ! -d ~/goinfre/.vscode ] && cp -Rf ~/.vscode ~/goinfre
+[ -d ~/.vscode ] && rm -Rf ~/.vscode; [ ! -L ~/.vscode ] && ln -s ~/goinfre/.vscode ~/
+
+
+[ ! -L ~/.zshrc ] && ln -s ~/goinfre/mydotfiles/.zshrc ~/
+[ ! -L ~/.oh-my-zsh ] && ln -s ~/goinfre/mydotfiles/.oh-my-zsh ~/
+[ ! -e ~/$current ] && ln -s ~/goinfre/$current ~/$current
+
+cd $current
+
+### OMZ ###
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -100,19 +129,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 source ~/.42-wizzard.sh
 
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
-code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+#code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 export PATH=~/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/Users/hbenfadd/goinfre/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 
-alias caches_to_gfr="[ ! -d ~/goinfre/Caches] && cp -Rf ~/Library/Caches ~/goinfre"
-alias lnkc="[ -d ~/Library/Caches ] && rm -Rf ~/Library/Caches; [ ! -L ~/Library/Caches ] && ln -s ~/goinfre/Caches ~/Library"
-
-caches_to_goinfre
-lnkc
