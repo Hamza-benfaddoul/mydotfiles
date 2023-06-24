@@ -5,7 +5,7 @@ export current=cub
 alias rc="vi ~/.zshrc"
 alias src="source ~/.zshrc"
 
-[ ! -d ~/goinfre/mydotfiles/ ] && git clone git@github.com:Hamza-benfaddoul/mydotfiles.git ~/goinfre 
+#[ ! -d ~/goinfre/mydotfiles/ ] && git clone git@github.com:Hamza-benfaddoul/mydotfiles.git ~/goinfre 
 [ ! -d ~/goinfre/$current ] && git clone git@github.com:walidoumechtak/CU-pushed.git ~/goinfre/$current
 
 alias caches_to_gfr="[ ! -d ~/goinfre/Caches ] && cp -Rf ~/Library/Caches ~/goinfre/"
@@ -18,8 +18,8 @@ lnkc
 [ -d ~/.vscode ] && rm -Rf ~/.vscode; [ ! -L ~/.vscode ] && ln -s ~/goinfre/.vscode ~/
 
 
-[ ! -L ~/.zshrc ] && ln -s ~/goinfre/mydotfiles/.zshrc ~/
-[ ! -L ~/.oh-my-zsh ] && ln -s ~/goinfre/mydotfiles/.oh-my-zsh ~/
+#[ ! -L ~/.zshrc ] && ln -s ~/goinfre/mydotfiles/.zshrc ~/
+#[ ! -L ~/.oh-my-zsh ] && ln -s ~/goinfre/mydotfiles/.oh-my-zsh ~/
 [ ! -e ~/$current ] && ln -s ~/goinfre/$current ~/$current
 
 cd $current
