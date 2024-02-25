@@ -10,6 +10,10 @@ static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-10%", NUL
 /* Brightness */
 static const char *brightness[2][11] = {{"xbacklight", "-inc", "10%", 0},{"xbacklight", "-dec", "5%", 0}};
 
+/* splitstatus  */
+static const int splitstatus        = 1;        /* 1 for split status items */
+static const char *splitdelim        = ";";       /* Character used for separating status */
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -36,8 +40,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance		title       tags mask     isfloating   monitor */
-	{ NULL,     	NULL,		NULL,		0,          	0,           -1 },
+	/* class		instance  title   tags mask     iscentered 	isfloating 	monitor */
+	{ "Gimp",    	 	NULL,     NULL,     0,         	  0,		   1,		-1 },
+	{ "qemu-system-x86_64",	NULL,	  NULL,	    1 << 8,	  0,		  0,		-1},
 };
 
 /* layout(s) */
@@ -76,7 +81,9 @@ static const Key keys[] = {
   { 0,                           XF86XK_AudioMute,   spawn,          {.v = mutecmd } },
   { 0,                    XF86XK_AudioLowerVolume,   spawn,          {.v = voldowncmd } },
   { 0,                    XF86XK_AudioRaiseVolume,   spawn,          {.v = volupcmd } },
-  { MODKEY,			                  XK_d,            spawn,            {.v = dmenucmd } },
+  { MODKEY|ControlMask,           XK_j,              pushdown,       {0} },
+	{ MODKEY|ControlMask,           XK_k,              pushup,         {0} },
+  { MODKEY,			                  XK_d,              spawn,          {.v = dmenucmd } },
 	{ MODKEY,         		          XK_Return,         spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,              togglebar,      {0} },
 	{ MODKEY,                       XK_j,              focusstack,     {.i = +1 } },
